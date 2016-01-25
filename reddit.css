@@ -1,0 +1,198 @@
+body{
+	padding-top:60px;
+	background-color:#B0B0B0 ;
+
+}
+
+.glyphicon{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+}
+
+.navbar{
+	box-shadow: 0 0 12px white;
+}
+
+#navSearch{
+	background-color:#888888;
+	text-shadow: 0 0 5px #202020;
+	border: 1px solid #B0B0B0;
+	box-shadow: 0 0 3px white;
+}
+
+
+.form-group{
+	text-shadow:  0 0 2px white;
+	color:#B0B0B0;
+}
+
+#log-btn{
+	background-color:#888888;
+	border:1px solid #B0B0B0;
+	color:white;
+	text-shadow: 0 0 8px white;
+	box-shadow: 0 0 8px white;
+	-webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#log-btn:hover {
+	background-color:black;
+}
+
+.navbar-brand {
+	color:#880000;
+	text-shadow: 0 0 3px white;
+}
+
+.dropdown-toggle{
+	color:#880000;
+	text-shadow: 0 0 3px white;
+}
+
+
+.panel-body{
+	height:180px;
+	padding:5px;
+}
+
+.form-group{
+	padding-top:10px;
+}
+
+img{
+	padding-top:10px;
+	padding-left:5px;
+}
+
+#temp{
+	width:200px;
+	max-width:200px;
+	height:150px;
+	max-height:150px;
+	display: inline-block;
+}
+
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+.cssSlideUp {
+    transition: .3s linear all;
+    height: 560px;
+    overflow: hidden;
+}
+.cssSlideUp.ng-hide {
+    height:0;
+}
+
+#subForm{
+	background-color:#202020 ;
+	border:1px dotted #202020;
+
+
+}
+
+.form-control{
+	background-color:#B0B0B0;
+	color:#300000 ;
+
+}
+
+#titleId{
+	position:fixed;
+	padding-bottom:60px;
+	padding-left:8px;
+}
+
+#authorId{
+	position:relative;
+	 float:right;
+}
+
+#descriptionId{
+	position:relative;
+	display:inline;
+	bottom:5px;
+	padding-left:8px;
+}
+
+.comments{
+	background-color: #F0F0F0;
+	border:1px solid: #480000;
+	color:#300000 ;
+
+}
+
+.postedTitle{
+	position:absolute;
+	display:inline;
+	float:top;
+}
+
+.postedAuthor{
+   position:relative;
+   float:right;
+}
+
+.postedDescription{
+	position:relative;
+	display:inline-block;
+
+}
+
+.postedImage{
+	width:200px;	
+	max-width:200px;
+	height:150px;
+	max-height:150px;
+	display: inline-block;
+}
+
+.time{
+	display:inline-block;
+	position:relative;
+	vertical-align:bottom;
+
+	
+}
+
+select{
+	background:transparent;
+	position:absolute;
+	text-shadow: 0 0 5px white;
+	top:15px;
+	text-decoration:none;
+	color:#888888;
+}
+
+
+
+.dateTime{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	position:relative;
+	vertical-align:bottom;
+	display:inline;
+	padding-left:220px;
+}
+
+.commentId{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	position:relative;
+	vertical-align:bottom;
+	display:inline;
+	padding-left:50px;
+}
+
+.addCommentId{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	position:relative;
+	vertical-align:bottom;
+	display:inline;
+	padding-left:60px;
+}

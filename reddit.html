@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app='App'>
+  <head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.3/angular-moment.min.js"></script>
+  <script type="text/javascript" src='reddit.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+  <link rel="stylesheet" href='reddit.css'>
+    <title></title>
+  </head>
+    <body ng-controller='Controller' class='container-fluid'>
+    <div class='container-fluid'>
+    <div class='row-fluid'>
+    <nav class='navbar navbar-inverse navbar-fixed-top'>
+      
+      <div class="navbar-header">
+      <a class="navbar-brand" href="#">YAMS</a>
+          <div class="navbar-header">
+      <a ng-click="show = !show" class="navbar-brand" href="#">Submit Post</a>
+    <span class="glyphicon glyphicon-eye-open animated infinite pulse"></span>
+
+         <form style='display:inline;'class="navbar-form" role="search">
+                <div class="form-group">
+                  <input id='navSearch' type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
+              </div>
+              </div>
+              <div class='drop'>
+          <select>
+          <option ng-repeat = 'item in page.drop' ng-model='item.value'>{{item}}</option>
+          </select>
+          </div>
+            </div>
+          </nav>  
+          </div>
+          </div>
+          <div class='container-fluid'>
+          <div ng-show="show" class='cssSlideUp'>
+            <form id='subForm' name='logForm' ng-submit='page.postInfo(); show = !show'>
+             <div class='form-group' ng-class="{'has-error':logForm.title.$invalid ,'has-success':logForm.title.$valid}">
+               <label>Title</label>
+                 <input class="form-control" name='title' type='text' placeholder='Title' ng-model='newPost.title' required>
+               </div>
+             <div class='form-group' ng-class="{'has-error':logForm.author.$invalid ,'has-success':logForm.author.$valid}">
+               <label>Author</label>
+                 <input class="form-control" name='author' type='text' placeholder='Author' ng-model='newPost.author' required>
+               </div>
+             <div class='form-group' ng-class="{'has-error':logForm.image.$invalid ,'has-success':logForm.image.$valid}">
+               <label>Image URL</label>
+                 <input class="form-control" name='image' type='text' placeholder='Image URL' ng-model='newPost.image' required>
+               </div>
+             <div class='form-group' ng-class="{'has-error':logForm.description.$invalid ,'has-success':logForm.description.$valid}">
+               <label>Description</label>
+                 <input class="form-control" name='description' type='text' placeholder='Description' ng-model='newPost.description' required>
+               </div>
+             <button id='log-btn' class='btn btn-primary animated pulse' type='submit'>Submit Post</button>
+          </form>
+          <div class="panel panel-default comments" >
+            <div class="panel-body">
+            <img id='temp' src="http://www.austinareaphoto.com/wp-content/uploads/2010/04/Chess-Board.jpg">
+                <h4 id='titleId' style='display:inline'>{{newPost.title}}<span class="glyphicon glyphicon-arrow-up"></span><!--<span ng-click='page.count()' -->class="glyphicon glyphicon-arrow-down"><!--<span ng-click='page.count()'--> ng-model="page.count ="</span></h4>
+                <h4 id='authorId'>{{newPost.author}}</h4>
+                <p  id='descriptionId'>{{newPost.description}}</p>
+                <div>
+                <time class='dateTime' name='date' ng-model='newPost.date'  title="{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"><span class="glyphicon glyphicon-calendar"></span>{{ time | amCalendar }}</time>
+                <p class='commentId'><span class="glyphicon glyphicon-paperclip"></span>comments</p>
+                <p class='addCommentId'><span class="glyphicon glyphicon-pencil"></span></span>comments</p>
+            </div>
+            </div>
+            </div>
+                <div ng-repeat='input in posts' ng-hide='false' class="panel panel-default comments" >
+            <div class="panel-body">
+            <img class='postedImage' ng-repeat='(key,val) in input' ng-if="key=='image'" ng-src='{{val}}'> 
+                <h4 class='postedTitle' ng-repeat='(key,val) in input'><span ng-if="key=='title'">{{val}}</span></h4>
+                <h4 class='postedAuthor' ng-repeat='(key,val) in input'><span ng-if="key=='author'">{{val}}</span></h4>
+                <p class='postedDescription' ng-repeat='(key,val) in input'><span ng-if="key=='description'">{{val}}</span></p>
+                <time class='dateTime' name='date' ng-model='newPost.date'  title="{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"><span class="glyphicon glyphicon-calendar">{{ time | amCalendar }}</time>
+                <p class='commentId'><span class="glyphicon glyphicon-paperclip commentId">comments</p>
+                <p class='addCommentId'><span class="glyphicon glyphicon-pencil"></span></span>comments</p>
+                </div>
+                </div>
+          <!--<h1>http://images.media-allrecipes.com/userphotos/250x250/949777.jpg-->
+          </div>
+
+
+         
+
+  </body>
+</html>

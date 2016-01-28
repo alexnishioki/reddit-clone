@@ -70,7 +70,7 @@
                 <time class='dateTimePost' name='date'><span class="glyphicon glyphicon-calendar"></span>{{input.time | amCalendar }}</time>
                 <p ng-click="showThree = !showThree" class='commentPost'><span class="glyphicon glyphicon-paperclip"></span>comments</p>
                 <p ng-click="showTwo = !showTwo" class='addCommentPost'><span class="glyphicon glyphicon-pencil"></span>add comment</p>
-         		 <div class='container-fluid' ng-show="showTwo">
+         		 <div class='container-fluid cssSlideUpF' ng-show="showTwo">
           			<form class='form-inline' id='commentForm' name='commentForm' ng-submit='commentPost(input);showTwo = !showTwo'>
               		<div class='form-group'>
                			<label>Author</label>

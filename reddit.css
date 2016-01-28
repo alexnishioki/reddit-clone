@@ -99,6 +99,16 @@ img{
     height:0;
 }
 
+.cssSlideUpF {
+    transition: .2s linear all;
+    height: 50px;
+    overflow: hidden;
+}
+
+.cssSlideUpF.ng-hide {
+    height:0;
+}
+
 #subForm{
 	background-color:#202020 ;
 	border:1px solid black;

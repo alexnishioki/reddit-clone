@@ -1,6 +1,6 @@
 angular.module('App',['ngAnimate','angularMoment']).controller('Controller',function($scope) {
-	$scope.page = {}
 	
+	$scope.page = {}
 	
 	$scope.posts = [];
 	
@@ -8,21 +8,18 @@ angular.module('App',['ngAnimate','angularMoment']).controller('Controller',func
 
 	$scope.asValue = 0
 
-
-	
 	$scope.postInfo = function() {
 		$scope.newPost.comments = []
 		$scope.newPost.newComment = {};
-		//$scope.newComment = {}
 		$scope.posts.push($scope.newPost)
 		$scope.newPost.count = 0
 		$scope.logForm.$setPristine()
 		$scope.newPost.time = new Date()
 		$scope.newPost = {}
 	  }
+	  
 	$scope.commentPost = function(form) {
 		console.log(form)
-		//console.log($scope.newComment);
 		form.comments.push(form.newComment)
 		form.newComment = {};
 		form.commentForm.$setPristine()

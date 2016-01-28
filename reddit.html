@@ -12,35 +12,32 @@
     <title></title>
   </head>
     <body ng-controller='Controller' class='container-fluid'>
-    <div class='container-fluid'>
-    <div class='row-fluid'>
-    <nav class='navbar navbar-inverse navbar-fixed-top'>
-      
-      <div class="navbar-header">
-      <a class="navbar-brand" href="#">YAMS</a>
-          <div class="navbar-header">
-      <a ng-click="show = !show" class="navbar-brand" href="#">Submit Post</a>
-    <span class="glyphicon glyphicon-eye-open animated infinite pulse"></span>
-
-         <form style='display:inline;'class="navbar-form" role="search">
-                <div class="form-group">
-                  <input id='navSearch' type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
-              </div>
-              </div>
-              <div class='drop'>
-          <select>
-          <option ng-repeat = 'item in page.drop' ng-model='item.value'>{{item}}</option>
-          </select>
-          </div>
-            </div>
-          </nav>  
-          </div>
-          </div>
-          <div class='container-fluid'>
-          <div ng-show="show" class='cssSlideUp'>
-            <form id='subForm' name='logForm' ng-submit='page.postInfo(); show = !show'>
+      <div class='row-fluid'>
+    	<nav class='navbar navbar-inverse navbar-fixed-top'>   
+      	  <div class="navbar-header">
+      		<a class="navbar-brand" href="#">YAMS</a>
+          	  <div class="navbar-header">
+      			<a ng-click="show = !show" class="navbar-brand" href="#">Submit Post</a>
+    			  <span class="glyphicon glyphicon-eye-open animated infinite pulse"></span>
+      				<form style='display:inline;'class="navbar-form" role="search">
+        			  <div class="form-group">
+           				<input ng-model="query" id='navSearch' type="text" class="form-control" placeholder="Search">
+        			  </div>
+      			    </form>
+    			  </div>
+   				</div>
+  			      <div class='drop'>
+   					<select  ng-model='changeOrder'>
+   					  <option value='-count'>votes</option>
+   					  <option value='+title'>title</option>
+   					  <option value='+date'>date</option>
+   					</select>
+  				 </div>
+ 			 </div>
+		  </nav>  
+  		  <div class='container-fluid'>
+   			<div ng-show="show" class='cssSlideUp'>
+            <form id='subForm' name='logForm' ng-submit='postInfo(logForm); show = !show'>
              <div class='form-group' ng-class="{'has-error':logForm.title.$invalid ,'has-success':logForm.title.$valid}">
                <label>Title</label>
                  <input class="form-control" name='title' type='text' placeholder='Title' ng-model='newPost.title' required>
@@ -55,39 +52,43 @@
                </div>
              <div class='form-group' ng-class="{'has-error':logForm.description.$invalid ,'has-success':logForm.description.$valid}">
                <label>Description</label>
-                 <input class="form-control" name='description' type='text' placeholder='Description' ng-model='newPost.description' required>
+                 <input class="form-control" ng-maxlength='670' name='description' type='text' placeholder='Description' ng-model='newPost.description' required>
                </div>
              <button id='log-btn' class='btn btn-primary animated pulse' type='submit'>Submit Post</button>
           </form>
-          <div class="panel panel-default comments" >
+         </div>
+         </div>
+        </div>
+          <div ng-repeat="input in posts| orderBy:changeOrder|filter:query" ng-hide='false' class="panel panel-default comments" >
             <div class="panel-body">
-            <img id='temp' src="http://www.austinareaphoto.com/wp-content/uploads/2010/04/Chess-Board.jpg">
-                <h4 id='titleId' style='display:inline'>{{newPost.title}}<span class="glyphicon glyphicon-arrow-up"></span><!--<span ng-click='page.count()' -->class="glyphicon glyphicon-arrow-down"><!--<span ng-click='page.count()'--> ng-model="page.count ="</span></h4>
-                <h4 id='authorId'>{{newPost.author}}</h4>
-                <p  id='descriptionId'>{{newPost.description}}</p>
-                <div>
-                <time class='dateTime' name='date' ng-model='newPost.date'  title="{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"><span class="glyphicon glyphicon-calendar"></span>{{ time | amCalendar }}</time>
-                <p class='commentId'><span class="glyphicon glyphicon-paperclip"></span>comments</p>
-                <p class='addCommentId'><span class="glyphicon glyphicon-pencil"></span></span>comments</p>
-            </div>
-            </div>
-            </div>
-                <div ng-repeat='input in posts' ng-hide='false' class="panel panel-default comments" >
-            <div class="panel-body">
-            <img class='postedImage' ng-repeat='(key,val) in input' ng-if="key=='image'" ng-src='{{val}}'> 
-                <h4 class='postedTitle' ng-repeat='(key,val) in input'><span ng-if="key=='title'">{{val}}</span></h4>
-                <h4 class='postedAuthor' ng-repeat='(key,val) in input'><span ng-if="key=='author'">{{val}}</span></h4>
-                <p class='postedDescription' ng-repeat='(key,val) in input'><span ng-if="key=='description'">{{val}}</span></p>
-                <time class='dateTime' name='date' ng-model='newPost.date'  title="{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"><span class="glyphicon glyphicon-calendar">{{ time | amCalendar }}</time>
-                <p class='commentId'><span class="glyphicon glyphicon-paperclip commentId">comments</p>
-                <p class='addCommentId'><span class="glyphicon glyphicon-pencil"></span></span>comments</p>
-                </div>
-                </div>
-          <!--<h1>http://images.media-allrecipes.com/userphotos/250x250/949777.jpg-->
-          </div>
+            	<img class='postedImage' ng-src='{{input.image}}'> 
+                	<h4 class='postedTitle' ng-repeat='(key,val) in input'>{{input.title}}</h4>
+                		<span ng-click='input.count = input.count + 1' class="glyphicon glyphicon-arrow-up"></span> <span ng-click='input.count = input.count - 1' class="glyphicon glyphicon-arrow-down">{{input.count}}</span>
+                	<h4 class='postedAuthor'>{{input.author}}</h4>
+                		<p class='postedDescription'>{{input.description}}</p>
+                	</div>
+                <time class='dateTimePost' name='date'><span class="glyphicon glyphicon-calendar"></span>{{input.time | amCalendar }}</time>
+                <p ng-click="showThree = !showThree" class='commentPost'><span class="glyphicon glyphicon-paperclip"></span>comments</p>
+                <p ng-click="showTwo = !showTwo" class='addCommentPost'><span class="glyphicon glyphicon-pencil"></span>add comment</p>
+         		 <div class='container-fluid' ng-show="showTwo">
+          			<form class='form-inline' id='commentForm' name='commentForm' ng-submit='commentPost(input);showTwo = !showTwo'>
+              		<div class='form-group'>
+               			<label>Author</label>
+                 			<input style='background-color:#888888;box-shadow:  0 0 5px white;' class="form-control" name='author' type='text'  ng-model='input.newComment.author' required>
+               			<label>Text</label>
+                 			<input style='background-color:#888888;box-shadow:0 0 8px white;' ng-model='input.newComment.text' class="form-control" name='text' type='text' required>
+              			</div>
+              				<button id='com-btn' class='btn btn-primary animated pulse' type='submit'>Post Comment</button>
+               			</form>
+               		</div>
+                   	  <div ng-show="showThree" class="panel panel-default comments" >
+                      	<div ng-repeat="comment in input.comments"class="panel-body">
+                          <h3 class='comment-text'>{{comment.author}}</h3>
+                          <h4 class='comment-text'>{{comment.text}}</h4>
 
-
-         
-
-  </body>
-</html>
+                    
+                       </div>
+                    </div>
+               </div>             
+  	  		</body>
+		</html>

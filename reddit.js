@@ -1,18 +1,31 @@
 angular.module('App',['ngAnimate','angularMoment']).controller('Controller',function($scope) {
 	$scope.page = {}
-	$scope.time = new Date()
-	//$scope.page.count = 0
-	$scope.page.drop = ['votes','dates','titles']
-	// $scope.page.count = function() {
-	// 	$scope.page.count + 1
-
-	// }
 	
-	$scope.page.postInfo = function() {
-		$scope.posts = $scope.posts || []
-		$scope.posts.push($scope.newPost)
-		$scope.newPost = {}
-		$scope.logForm.$setPristine()
-	}
+	
+	$scope.posts = [];
+	
+	$scope.newPost={};
 
-})
+	$scope.asValue = 0
+
+
+	
+	$scope.postInfo = function() {
+		$scope.newPost.comments = []
+		$scope.newPost.newComment = {};
+		//$scope.newComment = {}
+		$scope.posts.push($scope.newPost)
+		$scope.newPost.count = 0
+		$scope.logForm.$setPristine()
+		$scope.newPost.time = new Date()
+		$scope.newPost = {}
+	  }
+	$scope.commentPost = function(form) {
+		console.log(form)
+		//console.log($scope.newComment);
+		form.comments.push(form.newComment)
+		form.newComment = {};
+		form.commentForm.$setPristine()
+	  }
+
+ })

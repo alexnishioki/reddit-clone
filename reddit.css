@@ -1,3 +1,6 @@
+
+
+
 body{
 	padding-top:60px;
 	background-color:#B0B0B0 ;
@@ -53,8 +56,14 @@ body{
 
 
 .panel-body{
-	height:180px;
+	height:150px;
 	padding:5px;
+}
+
+.extend{
+	height:100px;
+	padding:5px;
+
 }
 
 .form-group{
@@ -84,13 +93,20 @@ img{
     height: 560px;
     overflow: hidden;
 }
+
+.cssSlideUpCom {
+    transition: .4s linear all;
+    height: 260px;
+    overflow: hidden;
+}
+
 .cssSlideUp.ng-hide {
     height:0;
 }
 
 #subForm{
 	background-color:#202020 ;
-	border:1px dotted #202020;
+	border:1px solid black;
 
 
 }
@@ -108,15 +124,17 @@ img{
 }
 
 #authorId{
-	position:relative;
+	position:absolute;
 	 float:right;
 }
 
 #descriptionId{
-	position:relative;
-	display:inline;
-	bottom:5px;
+	 word-wrap: break-word;
+   width: 1000px;
+	display:inline-block;
+	vertical-align:middle;
 	padding-left:8px;
+
 }
 
 .comments{
@@ -130,16 +148,23 @@ img{
 	position:absolute;
 	display:inline;
 	float:top;
+	padding-left:15px;
 }
 
 .postedAuthor{
    position:relative;
    float:right;
+   padding-left:10px;
 }
 
 .postedDescription{
-	position:relative;
+	position:absolute;
+	word-wrap: break-word;
+   width: 960px;
 	display:inline-block;
+	vertical-align:top;
+	padding-left:20px;
+	padding-top:40px;
 
 }
 
@@ -174,7 +199,7 @@ select{
 	color:red;
 	text-shadow: 0 0 3px #FF0000;
 	position:relative;
-	vertical-align:bottom;
+	vertical-align:middle;
 	display:inline;
 	padding-left:220px;
 }
@@ -183,7 +208,7 @@ select{
 	color:red;
 	text-shadow: 0 0 3px #FF0000;
 	position:relative;
-	vertical-align:bottom;
+	vertical-align:middle;
 	display:inline;
 	padding-left:50px;
 }
@@ -192,7 +217,69 @@ select{
 	color:red;
 	text-shadow: 0 0 3px #FF0000;
 	position:relative;
-	vertical-align:bottom;
+	vertical-align:middle;
 	display:inline;
 	padding-left:60px;
 }
+
+#one{
+	height:180px;
+	padding:5px;
+
+}
+
+#two{
+	height:100px;
+	padding:5px;
+
+}
+
+.dateTimePost{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	display:inline;
+	padding-left:230px;
+	
+}
+
+.commentPost{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	display:inline;
+	padding-left:45px;
+	bottom:20px;
+	
+}
+
+.addCommentPost{
+	color:red;
+	text-shadow: 0 0 3px #FF0000;
+	display:inline;
+	padding-left:55px;
+	
+}
+
+.arrow{
+	padding-right:2px;
+}
+
+#commentForm{
+	background-color:#202020 ;
+	border:1px dotted #202020;
+
+}
+
+#com-btn{
+	background-color:black;
+	border:1px solid #B0B0B0;
+	padding-left:8px;
+	color:white;
+	text-shadow: 0 0 8px white;
+	box-shadow: 0 0 8px white;
+	-webkit-animation-duration: 3s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+
+
